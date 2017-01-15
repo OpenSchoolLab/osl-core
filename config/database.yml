@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: <%= ENV['OPENSCHOOLLAB-CORE_DATABASE_USERNAME'] %>
+  password: <%= ENV['OPENSCHOOLLAB-CORE_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: OpenSchoolLab-core_development
+
+test:
+  <<: *default
+  database: OpenSchoolLab-core_test
+
+production:
+  <<: *default
+  adapter: postgres
+  database: OpenSchoolLab-core_production
