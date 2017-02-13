@@ -1,7 +1,6 @@
 language: ruby
 rvm:
   - 2.2.6
-  - jruby
 
 services:
   - mysql
