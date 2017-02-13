@@ -17,6 +17,9 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - sleep 3
 
+before_install:
+  - mysql -e 'CREATE USER IF NOT EXISTS "osl"@"localhost" IDENTIFIED BY "password";'
+
 install:
   - gem install bundler
 
