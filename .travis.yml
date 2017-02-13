@@ -26,7 +26,8 @@ gemfile:
 script:
   - bin/bundle install
   - ./scripts/initialize-database.sh
-  - bin/rails db:drop db:create db:migrate
+  - bin/rails db:drop
+  - bin/rails db:create db:migrate
   - bin/bundle exec rspec
 
 notifications:
