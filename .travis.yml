@@ -1,0 +1,32 @@
+language: ruby
+rvm:
+  - 2.3
+  - jruby
+
+services:
+  - mysql
+
+before_install:
+  - if [[ `ruby -v` != 2.3.1 ]]; then
+      rvm install ruby-2.3.1;
+      rvm use 2.3.1 --default
+    fi
+  - ruby --version
+
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+
+install:
+  - gem install rails
+
+gemfile:
+  - Gemfile
+
+script:
+  - bin/bundle install
+  - ./scripts/initialize-database.sh
+  - bin/bundle exec rspec
+
+notifications:
+  email: false
