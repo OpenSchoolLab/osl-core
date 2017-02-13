@@ -17,9 +17,6 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - sleep 3
 
-install:
-  - gem install rails
-
 gemfile:
   - Gemfile
 
