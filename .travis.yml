@@ -1,15 +1,15 @@
 language: ruby
 rvm:
-  - 2.2
+  - 2.2.2
   - jruby
 
 services:
   - mysql
 
 before_install:
-  - if [[ `ruby -v` != 2.2 ]]; then
-      rvm install ruby-2.2;
-      rvm use 2.2 --default;
+  - if [[ `ruby -v` != 2.2.2 ]]; then
+      rvm install ruby-2.2.2;
+      rvm use 2.2.2 --default;
     fi
   - ruby --version
 
