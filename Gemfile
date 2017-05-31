@@ -16,6 +16,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'faker'
   gem 'pry', '0.10.4'
+  gem 'factory_girl_rails'
 end
 
 group :development do

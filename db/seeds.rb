@@ -1,1 +1,1 @@
-User.create(:email => 'superuser@osl.me', :password => 'password', :password_confirmation => 'password', :first_name => "Super", :last_name => "Man", :username => "superman")
+User.create!(:email => 'superuser@osl.me', :password => 'password', :password_confirmation => 'password', :first_name => "Super", :last_name => "User", :username => "superuser")
