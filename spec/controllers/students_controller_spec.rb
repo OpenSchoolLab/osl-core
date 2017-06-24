@@ -52,4 +52,34 @@ RSpec.describe StudentsController, type: :controller do
             expect(response).to have_http_status(:unauthorized)
         end
     end
+    describe 'GET all_students' do
+        before(:each) do
+            login_with user
+            @person = FactoryGirl.create(:person, :created_by => user.id)
+            @person_name = FactoryGirl.create(:person_name, :person_id => @person.id, :created_by => user.id)
+            @person_detail = FactoryGirl.create(:person_detail, :created_by => user.id, :person_id => @person.id)
+        end
+
+        after(:each) do
+            login_with nil
+            PersonDetail.delete_all
+            PersonName.delete_all
+            Person.delete_all
+        end
+
+        it 'should show all student list' do
+            get :index
+            expect(response).to be_success
+            expect(response).to have_http_status(:ok)
+            parsed_response = JSON.parse(response.body)
+            expect(parsed_response.length).to eq(1)
+        end
+
+        it 'should not show student information when a user is not logged in' do
+            login_with nil
+            get :index
+            expect(response).to have_http_status(:unauthorized)
+        end
+
+    end
 end
